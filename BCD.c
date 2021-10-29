@@ -117,15 +117,15 @@ int main(int argc, char const *argv[])
     // decimal number
     int test, length, input = 29;
 
-    test = bcd2sevenSegmentDecoder(input);
-
     // emtpy bit array
     char output2[3] = {'0', '0', '\0'};
 
     // get size of array for loop
     length = strlen(output2);
 
-    binary2Hex(test / 10, output2);
+    int digit1 = bcd2sevenSegmentDecoder(input / 10);
+
+    binary2Hex(digit1, output2);
 
     // print the binary code for the decimal
     for (int i = 0; i < length; i++)
@@ -133,7 +133,9 @@ int main(int argc, char const *argv[])
         printf("%c", output2[i]);
     }
 
-    binary2Hex(test % 20, output2);
+    int digit2 = bcd2sevenSegmentDecoder(input % 20);
+
+    binary2Hex(digit2, output2);
 
     // format
     printf("\n");
